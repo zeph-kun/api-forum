@@ -1,5 +1,5 @@
 const userSwagger = require('../swagger/user.swagger');
-//const forumSwagger = require('../swagger/forum.swagger');
+const forumSwagger = require('../swagger/forum.swagger');
 const themeSwagger = require('../swagger/theme.swagger');
 const messageSwagger = require('../swagger/message.swagger');
 const swaggerOptions = {
@@ -16,6 +16,7 @@ const swaggerOptions = {
                     ...userSwagger.components.schemas,
                     ...themeSwagger.components.schemas,
                     ...messageSwagger.components.schemas,
+                    ...forumSwagger.components.schemas
                 }
             }
     },

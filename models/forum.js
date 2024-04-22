@@ -8,8 +8,27 @@ module.exports = (sequelize) => {
     }
 
     Forum.init({
-        title: DataTypes.STRING,
-        description: DataTypes.TEXT
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        title: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        description: {
+            type: DataTypes.TEXT,
+            allowNull: true
+        },
+        themeId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'Themes',
+                key: 'id'
+            }
+        }
     }, {
         sequelize,
         modelName: 'Forum'
