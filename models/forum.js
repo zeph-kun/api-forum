@@ -4,6 +4,7 @@ module.exports = (sequelize) => {
     class Forum extends Model {
         static associate(models) {
             Forum.belongsTo(models.Theme, { foreignKey: 'themeId' });
+            Forum.hasMany(models.Messages, { foreignKey: 'forumId' });
         }
     }
 
@@ -31,7 +32,7 @@ module.exports = (sequelize) => {
         }
     }, {
         sequelize,
-        modelName: 'Forum'
+        modelName: 'Forums'
     });
 
     return Forum;

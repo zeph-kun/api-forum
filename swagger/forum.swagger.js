@@ -1,7 +1,7 @@
 module.exports = {
     components: {
         schemas: {
-            Forum: {
+            Forums: {
                 type: 'object',
                 properties: {
                     id: { type: 'integer', format: 'int64' },

@@ -18,6 +18,7 @@ app.use('/messages', messageRoutes);
 app.use('/themes', themesRoutes);
 app.use('/forums', forumsRoutes);
 
+
 sequelize.sync().then(() => {
     console.log('Les modèles ont été synchronisés avec la base de données.');
 });

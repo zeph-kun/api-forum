@@ -34,7 +34,7 @@ router.get('/user/:userId', async (req, res) => {
     try {
         const messages = await Message.findAll({
             where: { userId: userId }
-        });
+         });
         if (messages.length > 0) {
             res.json(messages);
         } else {

@@ -2,8 +2,9 @@ const { Model, DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
     class Message extends Model {
         static associate(models) {
+            Message.belongsTo(models.Forums, { foreignKey: 'forumId' });
             Message.belongsTo(models.User, { foreignKey: 'userId' });
-            Message.hasMany(models.Message, { as: 'Replies', foreignKey: 'replyToMessageId' });
+            Message.hasMany(models.Messages, { as: 'Replies', foreignKey: 'replyToMessageId' });
         }
     }
     Message.init({
@@ -22,23 +23,31 @@ module.exports = (sequelize) => {
     },
     userId: {
         type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
+        allowNull: false,
+        references: {
             model: 'Users',
-                key: 'id'
+            key: 'id'
         }
     },
     replyToMessageId: {
         type: DataTypes.INTEGER,
-            allowNull: true,
-            references: {
+        allowNull: true,
+        references: {
             model: 'Messages',
-                key: 'id'
+            key: 'id'
+        }
+    },
+    forumId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'Forums',
+            key: 'id'
         }
     }
 }, {
         sequelize,
-            modelName: 'Message'
+            modelName: 'Messages'
     });
     return Message;
 };
